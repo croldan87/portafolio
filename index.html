@@ -455,12 +455,19 @@
             align-items: center;
             cursor: pointer;
             border-left: 4px solid var(--rojo-primario);
+            transition: background 0.3s ease;
+            user-select: none;
+        }
+
+        .vendor-header:hover {
+            background: #252525;
         }
 
         .vendor-header h3 {
             font-family: 'Montserrat', sans-serif;
             font-size: 1.1rem;
             font-weight: 600;
+            flex: 1;
         }
 
         .vendor-count {
@@ -470,11 +477,23 @@
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 600;
+            margin-right: 1rem;
+        }
+
+        .vendor-arrow {
+            color: var(--rojo-primario);
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .vendor-header.active .vendor-arrow {
+            transform: rotate(180deg);
         }
 
         .vendor-certs {
-            padding: 1rem 1.5rem;
             display: none;
+            padding: 1rem 1.5rem;
+            background: var(--gris-claro);
         }
 
         .vendor-certs.open {
@@ -693,6 +712,67 @@
             font-size: 0.9rem;
         }
 
+        /* ============ SKILLS ============ */
+        .skills {
+            background: var(--gris-oscuro);
+            padding: 80px 0;
+        }
+
+        .skills-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .skill-item {
+            margin-bottom: 30px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .skill-name {
+            color: var(--blanco);
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .skill-percentage {
+            color: var(--rojo-primario);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .skill-bar {
+            height: 20px;
+            background: #3a3a3a;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #C41E3A, #ff4d4d, #C41E3A);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(196, 30, 58, 0.5);
+            position: relative;
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.2), transparent);
+            border-radius: 10px 10px 0 0;
+        }
+
         /* ============ RESPONSIVE ============ */
         @media (max-width: 968px) {
             .hero .container {
@@ -787,6 +867,7 @@
             <ul id="navMenu">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#certificaciones">Certificaciones</a></li>
                 <li><a href="#proyectos">Proyectos</a></li>
                 <li><a href="#contacto">Contacto</a></li>
@@ -883,6 +964,66 @@
         </div>
     </section>
 
+    <!-- Skills -->
+    <section class="skills" id="skills">
+        <div class="section-container">
+            <h2 class="section-title">Habilidades</h2>
+            <p class="section-subtitle">Competencias técnicas desarrolladas a lo largo de mi carrera</p>
+            
+            <div class="skills-container">
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Preventa & Diseño de Soluciones</span>
+                        <span class="skill-percentage">95%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Cloud Architecture (Oracle, AWS, Azure)</span>
+                        <span class="skill-percentage">90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Ciberseguridad (Fortinet, Kaspersky, Palo Alto, Qualys)</span>
+                        <span class="skill-percentage">85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Infraestructura & Networking (Dell, Ruckus, Cisco)</span>
+                        <span class="skill-percentage">85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">ERP & Business Intelligence (Odoo, Power BI)</span>
+                        <span class="skill-percentage">80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Certificaciones -->
     <section class="certifications" id="certificaciones">
         <div class="section-container">
@@ -907,7 +1048,7 @@
                 <div class="cert-vendor" data-category="security">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>AKAMAI</h3>
-                        <span class="vendor-count">12</span>
+                        <span class="vendor-count">12</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Web Application & API Protection Basic Enablement</span><span class="cert-date">Mar 2023</span></div>
@@ -929,7 +1070,7 @@
                 <div class="cert-vendor" data-category="cloud">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>MICROSOFT</h3>
-                        <span class="vendor-count">1</span>
+                        <span class="vendor-count">1</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Microsoft Azure Administrator</span><span class="cert-date">Jul 2025</span></div>
@@ -940,7 +1081,7 @@
                 <div class="cert-vendor" data-category="cloud">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>AWS</h3>
-                        <span class="vendor-count">3</span>
+                        <span class="vendor-count">3</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">AWS Well-Architected Foundations</span><span class="cert-date">Oct 2024</span></div>
@@ -953,7 +1094,7 @@
                 <div class="cert-vendor" data-category="cloud">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>ORACLE UNIVERSITY</h3>
-                        <span class="vendor-count">5</span>
+                        <span class="vendor-count">5</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Oracle Cloud Infrastructure 2024 Certified Foundations Associate</span><span class="cert-date">Jun 2023</span></div>
@@ -968,7 +1109,7 @@
                 <div class="cert-vendor" data-category="security">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>FORTINET</h3>
-                        <span class="vendor-count">7</span>
+                        <span class="vendor-count">7</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">NSE 1 Network Security Associate</span><span class="cert-date">Dic 2022</span></div>
@@ -985,7 +1126,7 @@
                 <div class="cert-vendor" data-category="security">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>KASPERSKY</h3>
-                        <span class="vendor-count">12</span>
+                        <span class="vendor-count">12</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Sales Specialist: Kaspersky B2C Portfolio (B2CP01)</span><span class="cert-date">Ago 2025</span></div>
@@ -1007,7 +1148,7 @@
                 <div class="cert-vendor" data-category="security">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>QUALYS</h3>
-                        <span class="vendor-count">11</span>
+                        <span class="vendor-count">11</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Foundation: Vulnerability Management</span><span class="cert-date">Sep 2023</span></div>
@@ -1028,7 +1169,7 @@
                 <div class="cert-vendor" data-category="security">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>PALO ALTO NETWORKS</h3>
-                        <span class="vendor-count">4</span>
+                        <span class="vendor-count">4</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Introduction to Cybersecurity</span><span class="cert-date">May 2022</span></div>
@@ -1042,7 +1183,7 @@
                 <div class="cert-vendor" data-category="security">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>EC-COUNCIL</h3>
-                        <span class="vendor-count">1</span>
+                        <span class="vendor-count">1</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Ethical Hacking Essentials (EHE)</span><span class="cert-date">Nov 2023</span></div>
@@ -1053,7 +1194,7 @@
                 <div class="cert-vendor" data-category="infra">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>DELL</h3>
-                        <span class="vendor-count">7</span>
+                        <span class="vendor-count">7</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Sales Core Client Credential 2023</span><span class="cert-date">Nov 2023</span></div>
@@ -1070,7 +1211,7 @@
                 <div class="cert-vendor" data-category="infra">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>NUTANIX</h3>
-                        <span class="vendor-count">2</span>
+                        <span class="vendor-count">2</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Nutanix Sizing Associate</span><span class="cert-date">Jun 2024</span></div>
@@ -1082,7 +1223,7 @@
                 <div class="cert-vendor" data-category="infra">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>PURE STORAGE</h3>
-                        <span class="vendor-count">2</span>
+                        <span class="vendor-count">2</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Sales Professional</span><span class="cert-date">Abr 2025</span></div>
@@ -1094,7 +1235,7 @@
                 <div class="cert-vendor" data-category="infra">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>VEEAM</h3>
-                        <span class="vendor-count">14</span>
+                        <span class="vendor-count">14</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">VMTSP Cloud Service Provider 2025</span><span class="cert-date">Jul 2025</span></div>
@@ -1118,7 +1259,7 @@
                 <div class="cert-vendor" data-category="network">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>CISCO</h3>
-                        <span class="vendor-count">5</span>
+                        <span class="vendor-count">5</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Cybersecurity Essentials</span><span class="cert-date">May 2022</span></div>
@@ -1133,7 +1274,7 @@
                 <div class="cert-vendor" data-category="network">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>RUCKUS</h3>
-                        <span class="vendor-count">7</span>
+                        <span class="vendor-count">7</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">RUCKUS Portfolio Sales Training</span><span class="cert-date">May 2023</span></div>
@@ -1150,7 +1291,7 @@
                 <div class="cert-vendor" data-category="methodology">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>ISO / SKILLFRONT</h3>
-                        <span class="vendor-count">4</span>
+                        <span class="vendor-count">4</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">ISO/IEC 27001 Information Security Associate™</span><span class="cert-date">Abr 2023</span></div>
@@ -1164,7 +1305,7 @@
                 <div class="cert-vendor" data-category="methodology">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>PMI</h3>
-                        <span class="vendor-count">2</span>
+                        <span class="vendor-count">2</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Business Continuity</span><span class="cert-date">Feb 2022</span></div>
@@ -1176,7 +1317,7 @@
                 <div class="cert-vendor" data-category="methodology">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>6SIGMA / SCRUM</h3>
-                        <span class="vendor-count">2</span>
+                        <span class="vendor-count">2</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Six Sigma Yellow Belt</span><span class="cert-date">Ago 2022</span></div>
@@ -1188,7 +1329,7 @@
                 <div class="cert-vendor" data-category="methodology">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>CERTIPROF</h3>
-                        <span class="vendor-count">3</span>
+                        <span class="vendor-count">3</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Cybersecurity Foundation Professional Certificate CSFPC™</span><span class="cert-date">Oct 2021</span></div>
@@ -1201,7 +1342,7 @@
                 <div class="cert-vendor" data-category="infra">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>DYNATRACE</h3>
-                        <span class="vendor-count">2</span>
+                        <span class="vendor-count">2</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Dynatrace Partner Sales Certification</span><span class="cert-date">Jun 2024</span></div>
@@ -1213,7 +1354,7 @@
                 <div class="cert-vendor" data-category="infra">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>ARCSERVE</h3>
-                        <span class="vendor-count">2</span>
+                        <span class="vendor-count">2</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">ArcServe SaaS Backup Sales Certification</span><span class="cert-date">Abr 2024</span></div>
@@ -1225,7 +1366,7 @@
                 <div class="cert-vendor" data-category="infra">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>QNAP</h3>
-                        <span class="vendor-count">2</span>
+                        <span class="vendor-count">2</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Sales Training & Certification</span><span class="cert-date">Ene 2025</span></div>
@@ -1237,7 +1378,7 @@
                 <div class="cert-vendor" data-category="infra">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>QUEST</h3>
-                        <span class="vendor-count">4</span>
+                        <span class="vendor-count">4</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Database Management Sales Accreditation</span><span class="cert-date">Nov 2022</span></div>
@@ -1251,7 +1392,7 @@
                 <div class="cert-vendor" data-category="security">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>SKILLSOFT CompTIA Security+</h3>
-                        <span class="vendor-count">20</span>
+                        <span class="vendor-count">20</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">Analyzing Application & Network Attacks</span><span class="cert-date">Ene 2024</span></div>
@@ -1281,7 +1422,7 @@
                 <div class="cert-vendor" data-category="security">
                     <div class="vendor-header" onclick="toggleVendor(this)">
                         <h3>OTROS (CrowdSec, OPSWAT, Cybrary, OKR)</h3>
-                        <span class="vendor-count">14</span>
+                        <span class="vendor-count">14</span><span class="vendor-arrow">▼</span>
                     </div>
                     <div class="vendor-certs">
                         <div class="cert-item"><span class="cert-name">CrowdSec - Community Driven Cybersecurity</span><span class="cert-date">Oct 2023</span></div>
@@ -1420,9 +1561,9 @@
             <p class="section-subtitle">¿Interesado en trabajar juntos? ¡Contáctame!</p>
             
             <div class="contact-links">
-                <a href="/cdn-cgi/l/email-protection#caa9abb8a6a5b9abe4b8a5a6aeaba4a98aada7aba3a6e4a9a5a7" class="contact-link">
+                <a href="/cdn-cgi/l/email-protection#117270637d7e62703f637e7d75707f7251767c70787d3f727e7c" class="contact-link">
                     <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                    <span class="__cf_email__" data-cfemail="d7b4b6a5bbb8a4b6f9a5b8bbb3b6b9b497b0bab6bebbf9b4b8ba">[email&#160;protected]</span>
+                    <span class="__cf_email__" data-cfemail="583b392a34372b39762a37343c39363b183f35393134763b3735">[email&#160;protected]</span>
                 </a>
                 <a href="https://linkedin.com/in/croldan87" target="_blank" class="contact-link">
                     <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
@@ -1449,6 +1590,7 @@
 
         // Toggle certificaciones por vendor
         function toggleVendor(header) {
+            header.classList.toggle('active');
             const certs = header.nextElementSibling;
             certs.classList.toggle('open');
         }
@@ -1488,4 +1630,16 @@
 
         // Navbar scroll effect
         window.addEventListener('scroll', function() {
-            con
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(26, 26, 26, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                nav.style.background = 'rgba(26, 26, 26, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
+           
