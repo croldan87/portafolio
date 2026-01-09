@@ -778,7 +778,7 @@
     <!-- Navegación -->
     <nav>
         <div class="container">
-            <div class="logo">CR</div>
+            <div class="logo">Portafolio</div>
             <div class="menu-toggle" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
@@ -840,7 +840,7 @@
                 <div class="about-info">
                     <div class="info-item">
                         <div class="info-label">Email</div>
-                        <div class="info-value"><a href="/cdn-cgi/l/email-protection#2e4d4f5c42415d4f005c41424a4f404d6e49434f4742004d4143"><span class="__cf_email__" data-cfemail="036062716f6c70622d716c6f67626d6043646e626a6f2d606c6e">[email&#160;protected]</span></a></div>
+                        <div class="info-value"><a href="mailto:carlosa.roldanc@gmail.com">carlosa.roldanc@gmail.com</a></div>
                     </div>
                     <div class="info-item">
                         <div class="info-label">Teléfono</div>
@@ -1387,9 +1387,9 @@
             <p class="section-subtitle">¿Interesado en trabajar juntos? ¡Contáctame!</p>
             
             <div class="contact-links">
-                <a href="/cdn-cgi/l/email-protection#dbb8baa9b7b4a8baf5a9b4b7bfbab5b89bbcb6bab2b7f5b8b4b6" class="contact-link">
+                <a href="mailto:carlosa.roldanc@gmail.com" class="contact-link">
                     <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                    <span class="__cf_email__" data-cfemail="7b181a091714081a550914171f1a15183b1c161a121755181416">[email&#160;protected]</span>
+                    carlosa.roldanc@gmail.com
                 </a>
                 <a href="https://linkedin.com/in/croldan87" target="_blank" class="contact-link">
                     <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
@@ -1408,7 +1408,7 @@
         <p>© 2025 Carlos A. Roldán Caracún. Todos los derechos reservados.</p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Toggle menú móvil
         function toggleMenu() {
             document.getElementById('navMenu').classList.toggle('active');
@@ -1441,4 +1441,29 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('hre
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Cerrar menú móvil si está abierto
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(26, 26, 26, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                nav.style.background = 'rgba(26, 26, 26, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
